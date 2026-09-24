@@ -1,0 +1,5 @@
+# Normalize line endings so diffs stay clean across OSes
+* text=auto eol=lf
+*.bat text eol=crlf
+*.jar binary
+*.png binary
