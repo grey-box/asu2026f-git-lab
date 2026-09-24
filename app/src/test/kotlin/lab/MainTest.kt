@@ -8,4 +8,9 @@ class MainTest {
     fun `greet says hello`() {
         assertEquals("Hello, world!", greet("world"))
     }
+
+    @Test
+    fun `reverse reverses a string`() {
+        assertEquals("niltok", reverse("kotlin"))
+    }
 }
