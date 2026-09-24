@@ -25,7 +25,8 @@ Conventions and Generics remain as self-serve stretch material.
 
 1. Branch: `git switch -c week4/<username>`
 2. You'll each be **assigned** one small feature for the `app/` skeleton
-   (independent files; details in the team channel).
+   (five features, one per intern, in independent files; details in the team
+   channel).
 3. Requirements:
    - Clean commit history — no "fix typo" commits; amend before pushing
    - PR filled out per the template, including how you tested
