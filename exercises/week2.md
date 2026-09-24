@@ -31,6 +31,8 @@ Branch: `koans/<username>/wk2`. One commit per task, verify per-task (e.g.
    (JUnit, same style as the koans' tests).
 4. Open a PR. You'll be assigned one peer's PR to review — leave at least one
    constructive comment (something specific: naming, edge case, test gap).
+   We're five, so reviews run as a cycle: each person reviews the *next*
+   person's PR (wrapping around), which gives every PR exactly one reviewer.
 5. PRs merge in the Friday sync.
 
 ## Done when
