@@ -1,101 +1,79 @@
 # Environment Setup — Git + Kotlin (ASU2026F)
 
 One-time setup so you can run Git katas locally and verify Kotlin Koans with
-`./gradlew test`. Works on macOS, Windows, and Linux. Budget ~30–45 minutes.
+the Gradle wrapper. This guide matches your Notion task **"Set up your OS
+for Git and Kotlin"** — use the two together; the Notion task has the fuller
+explanations (how the Gradle wrapper works, and how SSH key exchange works).
 
-**What you're installing:** a JDK (Java is what Gradle runs on), Git, and
-GitHub access. Kotlin itself needs no separate install — the Gradle wrapper
-in each repo downloads and manages it automatically.
+Budget ~30–45 minutes.
+
+**What you're installing:** a JDK (Java is what Gradle runs on) and Git.
+You do **not** install Kotlin or Gradle — the Gradle wrapper (`gradlew`) in
+each repo downloads the exact versions the project needs on first run.
 
 ---
 
-## 1. Install a JDK
+## 0. Your terminal
 
-You need **JDK 17 or 21** (21 is what the team machines run; both work with
-our Gradle 8.10.2 setup).
+- **Mac:** the Terminal app — you're done.
+- **Windows:** use **WSL2/Ubuntu**, not native Windows. All course commands
+  are written for a Linux-style terminal, and WSL2 gives you the same
+  environment as everyone else. Full instructions in the Notion task; short
+  version: open PowerShell **as Administrator** → `wsl --install` → restart;
+  from then on work in the **Ubuntu** terminal and keep code in `~` (not
+  `/mnt/c/...` — the Windows drive, much slower for builds).
+- **Linux:** any terminal.
 
-### macOS
+Everything below is identical on macOS and Ubuntu/WSL2.
+
+## 1. Install a JDK (21)
+
+macOS:
 ```bash
-brew install --cask temurin@21
+brew install --cask temurin@21   # Homebrew first if needed: https://brew.sh
 ```
-(or download the `.pkg` from [adoptium.net](https://adoptium.net/temurin/releases/?version=21))
-
-### Windows
-Download and run the `.msi` from
-[adoptium.net](https://adoptium.net/temurin/releases/?version=21) (choose
-"Set JAVA_HOME" and "Add to PATH" options during install).
-
-### Linux (Debian/Ubuntu)
+Ubuntu / WSL2:
 ```bash
 sudo apt update && sudo apt install -y openjdk-21-jdk
 ```
-(Fedora: `sudo dnf install java-21-openjdk-devel`)
 
-### Verify
-Close and reopen your terminal, then:
+Verify:
 ```bash
 java -version
 ```
-You should see something like `openjdk version "21.0.x"`. If the command is
-not found on Windows, re-run the MSI and check "Add to PATH", or add
-`C:\Program Files\Eclipse Adoptium\jdk-21.x.x-hotspot` to PATH manually.
-
----
+You should see `openjdk version "21.0.x"`. If you get "command not found",
+stop and ask in the team channel before continuing.
 
 ## 2. Install Git and set your identity
 
-### Install
-- **macOS:** `brew install git` — or just `git --version`, which offers the
-  Apple command-line tools.
-- **Windows:** [git-scm.com/download/win](https://git-scm.com/download/win) —
-  default options are fine.
-- **Linux:** `sudo apt install git` (or your distro's package manager).
+```bash
+git --version    # macOS: if missing, accept macOS's install prompt
+                 # Ubuntu/WSL2: sudo apt install git
+```
 
-### Identity (everyone)
 Set these to the **name and email you use on GitHub** — commits made with a
 different email won't be attributed to you:
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 git config --global init.defaultBranch main
+git config --global core.autocrlf input
 ```
+(`input` is the right autocrlf setting on macOS/Ubuntu; the repos also carry
+a `.gitattributes` that pins line endings either way.)
 
-### Line endings — set this ONCE, per OS
-Repos here carry a `.gitattributes` that forces LF in the working tree, so
-choose the *recommended* setting for your OS; the repo file overrides Git's
-default for these repos either way:
-
-- **macOS / Linux:**
-  ```bash
-  git config --global core.autocrlf input
-  ```
-- **Windows:**
-  ```bash
-  git config --global core.autocrlf true
-  ```
-
-### Verify
+Verify:
 ```bash
-git --version
 git config --global user.name
 git config --global user.email
 ```
 
----
+## 3. Authenticate with GitHub (SSH keys)
 
-## 3. Authenticate with GitHub
-
-You need this to **push** and **open PRs**. (Cloning the two course repos
-works without auth — they're public.)
-
-The course tasks use **SSH keys**: you create a key pair on your machine,
-upload the *public* half to GitHub once, and GitHub then trusts your machine
-with no passwords. The full walkthrough (with a diagram of how the key
-exchange works) is in your **"Set up your OS for Git and Kotlin"** Notion
-task — the short version:
+Full walkthrough is in the Notion task; short version:
 
 ```bash
-ssh-keygen -t ed25519 -C "your GitHub email"   # accept defaults
+ssh-keygen -t ed25519 -C "your GitHub email"   # Enter to accept defaults
 cat ~/.ssh/id_ed25519.pub                       # copy this whole line
 ```
 
@@ -106,13 +84,8 @@ ssh -T git@github.com
 # → "Hi <your-username>! You've successfully authenticated."
 ```
 
-Never share the private key file (`id_ed25519`, no `.pub` extension).
-
-*Alternative:* if you prefer HTTPS, `gh auth login` (the
-[GitHub CLI](https://cli.github.com/)) sets up credentials for you — either
-works. Repos below are cloned over SSH to match the course tasks.
-
----
+(First time, it asks to confirm a fingerprint — type `yes`.) The private
+key file (`id_ed25519`, no `.pub` extension) never leaves your machine.
 
 ## 4. Clone the two course repos
 
@@ -127,68 +100,49 @@ git clone git@github.com:grey-box/asu2026f-git-lab.git
 - **lab** = where weekly apply exercises live; branches `week<N>/<username>`
   here **do** get merged.
 
-### Verify
-```bash
-ls ~/mesh/kotlin-koans/Introduction   # should list several .kt files
-ls ~/mesh/asu2026f-git-lab/exercises  # week1.md … week4.md
-```
-
-Windows note: `~` doesn't expand in the default `cmd` prompt — use Git Bash
-(installed with Git) or PowerShell, where `~` works.
-
----
-
-## 5. Verify the toolchain: run the Koans tests
-
-This is the real end-to-end check: Gradle will download itself, then Kotlin,
-then compile and run the Koans test suite. First run downloads a few hundred
-MB — be patient.
+## 5. Verify the toolchain
 
 ```bash
 cd ~/mesh/kotlin-koans
+./gradlew --version
+```
+The first run downloads Gradle — a few minutes. **Don't cancel it.**
+
+Success = it prints `Gradle 8.10.2` and a JVM line showing your Java
+version. This is the pass criterion in your Notion task.
+
+### Deeper check (recommended once): run the Koans test suite
+
+```bash
 ./gradlew test
 ```
+The koans start **unsolved**, so this ends in `BUILD FAILED` with a list of
+failing tests like `i_introduction._0HelloWorld`. That is the *correct*
+result — it proves compilation and the test runner work. As you solve each
+week's koans, the failure list shrinks; the target at each week's end is
+that week's sections passing.
 
-- **macOS/Linux:** use `./gradlew test` exactly as shown.
-- **Windows (cmd):** `gradlew.bat test`
-- **Windows (PowerShell):** `.\gradlew.bat test`
-
-### Expected result
-The koans start **unsolved**, so the run ends with:
-
-```
-BUILD FAILED
-```
-
-...plus a list of failing tests like `i_introduction._0HelloWorld`. That's
-correct — it proves the toolchain works. (This follows the repo README:
-you'll see `build failed` until you solve koans, one section at a time.)
-
-As you solve koans through the course, the failure list shrinks; the target
-at the end of each week is all of that week's koans passing.
-
-### Also verify the lab repo builds
+### Lab repo sanity check
 ```bash
 cd ~/mesh/asu2026f-git-lab/app
-./gradlew build        # Windows: gradlew.bat build
+./gradlew build
 ```
-This should end with `BUILD SUCCESSFUL` — the skeleton app has no failing
-work in it.
+Ends in `BUILD SUCCESSFUL` — nothing in the skeleton is broken.
 
-If either command fails with `JAVA_HOME is not set` or `No Java runtime
-present`, revisit step 1 (reinstall with the PATH/JAVA_HOME options, then
-reopen your terminal). For anything else, post the output in the team
-channel.
+If `gradlew` complains about Java (`JAVA_HOME is not set`, `No Java runtime
+present`), revisit step 1 and reopen your terminal. For anything else, post
+the exact command you ran and the full error text (copy-paste, not a
+screenshot) in the team channel.
 
 ---
 
-## Checklist (all four = done)
+## Checklist (all five = done)
 
-- [ ] `java -version` → 17 or 21
+- [ ] `java -version` → 21.x
 - [ ] `git config --global user.name` / `user.email` → your GitHub identity
 - [ ] `ssh -T git@github.com` → "Hi <your-username>!"
-- [ ] Both repos cloned under `~/mesh/`, and `./gradlew test` in koans fails
-      *only* with unsolved-koan test failures (toolchain OK)
+- [ ] Both repos cloned under `~/mesh/`
+- [ ] `./gradlew --version` in koans → `Gradle 8.10.2` + Java 21
 
-When you're done, tick your setup task on the Notion board and drop a ✅ in
-the team channel.
+When you're done, set your setup task on the Notion board to `Done` and drop
+a ✅ in the team channel.
