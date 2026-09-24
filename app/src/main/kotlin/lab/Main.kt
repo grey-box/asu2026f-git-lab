@@ -7,6 +7,10 @@ package lab
 
 fun greet(name: String): String = "Hello, $name!"
 
+/** Reverse a string. */
+fun reverse(s: String): String = s.reversed()
+
 fun main() {
     println(greet("ASU2026F"))
+    println(reverse("kotlin"))
 }
