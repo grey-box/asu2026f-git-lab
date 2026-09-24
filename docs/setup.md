@@ -88,29 +88,29 @@ git config --global user.email
 You need this to **push** and **open PRs**. (Cloning the two course repos
 works without auth — they're public.)
 
-The easiest path is the **GitHub CLI** (`gh`), which handles auth and PR
-creation for you.
+The course tasks use **SSH keys**: you create a key pair on your machine,
+upload the *public* half to GitHub once, and GitHub then trusts your machine
+with no passwords. The full walkthrough (with a diagram of how the key
+exchange works) is in your **"Set up your OS for Git and Kotlin"** Notion
+task — the short version:
 
-### Install GitHub CLI
-- **macOS:** `brew install gh`
-- **Windows:** `winget install GitHub.cli` (or the `.msi` from
-  [cli.github.com](https://cli.github.com/))
-- **Linux:** see [the official install page](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
-  (`sudo apt install gh` on Ubuntu 24.04+).
-
-### Log in
 ```bash
-gh auth login
+ssh-keygen -t ed25519 -C "your GitHub email"   # accept defaults
+cat ~/.ssh/id_ed25519.pub                       # copy this whole line
 ```
-Pick: **GitHub.com → HTTPS → Login with a web browser**, then follow the
-code-entry flow. This configures `git` to use `gh` as its credential helper,
-so plain `git push` works too.
 
-### Verify
+Add it at github.com → Settings → SSH and GPG keys → **New SSH key**, then:
+
 ```bash
-gh auth status
+ssh -T git@github.com
+# → "Hi <your-username>! You've successfully authenticated."
 ```
-Should show `Logged in to github.com as <your-username>`.
+
+Never share the private key file (`id_ed25519`, no `.pub` extension).
+
+*Alternative:* if you prefer HTTPS, `gh auth login` (the
+[GitHub CLI](https://cli.github.com/)) sets up credentials for you — either
+works. Repos below are cloned over SSH to match the course tasks.
 
 ---
 
@@ -118,8 +118,8 @@ Should show `Logged in to github.com as <your-username>`.
 
 ```bash
 mkdir -p ~/mesh && cd ~/mesh
-git clone https://github.com/grey-box/kotlin-koans.git
-git clone https://github.com/grey-box/asu2026f-git-lab.git
+git clone git@github.com:grey-box/kotlin-koans.git
+git clone git@github.com:grey-box/asu2026f-git-lab.git
 ```
 
 - **koans** = where you solve Kotlin Koans, on your own branch
@@ -186,7 +186,7 @@ channel.
 
 - [ ] `java -version` → 17 or 21
 - [ ] `git config --global user.name` / `user.email` → your GitHub identity
-- [ ] `gh auth status` → logged in
+- [ ] `ssh -T git@github.com` → "Hi <your-username>!"
 - [ ] Both repos cloned under `~/mesh/`, and `./gradlew test` in koans fails
       *only* with unsolved-koan test failures (toolchain OK)
 
