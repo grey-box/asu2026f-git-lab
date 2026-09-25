@@ -18,8 +18,8 @@ Finish **Classes** (three): Smart casts · Sealed classes · Rename on import
 
 Then **Properties** (two): Lazy property · Properties
 
-Branch: `koans/<username>/wk4`. This completes the assigned 24 — Builders,
-Conventions and Generics remain as self-serve stretch material.
+Branch: `koans/<username>/wk4`. This completes the assigned 26 — Builders,
+Conventions, Generics and Sequences remain as self-serve stretch material.
 
 ## Apply exercise (this repo)
 
@@ -30,7 +30,8 @@ Conventions and Generics remain as self-serve stretch material.
 3. Requirements:
    - Clean commit history — no "fix typo" commits; amend before pushing
    - PR filled out per the template, including how you tested
-   - Approve/review at least one peer's PR
+   - Approve/review at least one peer's PR — same cycle as week 2: you review
+     the *next* person's PR (wrapping around the roster order)
 4. After all features merge: verify the app builds — `./gradlew build` in
    `app/`.
 

@@ -12,6 +12,14 @@ you'd tell last week's self.
 
 ---
 
+## Week 4 observations
+
+*(entries go here)*
+
+## Week 3 observations
+
+*(entries go here)*
+
 ## Week 2 observations
 
 *(entries go here)*
