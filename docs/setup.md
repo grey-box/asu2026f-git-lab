@@ -93,12 +93,15 @@ key file (`id_ed25519`, no `.pub` extension) never leaves your machine.
 mkdir -p ~/mesh && cd ~/mesh
 git clone git@github.com:grey-box/kotlin-koans.git
 git clone git@github.com:grey-box/asu2026f-git-lab.git
+git clone https://github.com/eficode-academy/git-katas.git   # public, no auth needed
 ```
 
 - **koans** = where you solve Kotlin Koans, on your own branch
   `koans/<username>/wkN`.
 - **lab** = where weekly apply exercises live; branches `week<N>/<username>`
   here **do** get merged.
+- **git-katas** = the drill collection for the weekly kata exercises; run
+  locally only, never pushed anywhere.
 
 ## 5. Verify the toolchain
 
@@ -141,7 +144,7 @@ screenshot) in the team channel.
 - [ ] `java -version` → 21.x
 - [ ] `git config --global user.name` / `user.email` → your GitHub identity
 - [ ] `ssh -T git@github.com` → "Hi <your-username>!"
-- [ ] Both repos cloned under `~/mesh/`
+- [ ] All three repos cloned under `~/mesh/`
 - [ ] `./gradlew --version` in koans → `Gradle 8.10.2` + Java 21
 
 When you're done, set your setup task on the Notion board to `Done` and drop

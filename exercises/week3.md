@@ -14,8 +14,13 @@ once for real, together, because everyone edits the same file on purpose.
 
 ## Kotlin Koans (solo, ~2 hrs)
 
-Finish **Collections** (five, in order): Fold and reduce · Associate ·
-All Any and other predicates · Getting used to new style · Compound tasks
+The remaining five of the **Collections** core, in order: Fold and reduce ·
+Associate · All Any and other predicates · Getting used to new style ·
+Compound tasks
+
+(The core set is thirteen tasks total — eight in week 2, these five now.
+`Sequences` and the Builders/Conventions/Generics sections are intentionally
+out of scope for this course.)
 
 Then start **Classes** (two): Data classes · Extension functions
 
@@ -33,11 +38,15 @@ them like this:
 
 ```bash
 git fetch origin
-git rebase origin/main          # or merge; either is fine, be consistent
+git merge origin/main            # resolve, then `git commit` to conclude the merge
 # fix the <<<<<<< ======= >>>>>>> markers in your editor
 git add docs/TeamNotes.md
-git rebase --continue           # or git commit to conclude the merge
+git commit
 ```
+
+(Rebase — `git rebase origin/main` / `git rebase --continue` — is an equally
+valid style; we teach it after the course. Merge is what week 2 covered, so
+lead with it.)
 
 Do **not** edit other people's entries to resolve a conflict — keep their
 text, keep your text, arrange both. In the Friday sync we walk through every
@@ -45,7 +54,7 @@ conflicted PR as a group before merging.
 
 ## Done when
 
-- [ ] 4 katas complete (3 of them conflict resolutions)
+- [ ] 4 katas complete (2 of them conflict resolutions)
 - [ ] 7 koans committed, PR open in the fork
-- [ ] Your TeamNotes PR is conflict-free and merged
+- [ ] Your TeamNotes PR has its conflicts resolved and merged
 - [ ] You can explain: conflict markers, your resolution strategy, when to stash

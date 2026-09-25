@@ -9,14 +9,16 @@ you do blocks anyone else.
 Run these from your local clone of `eficode-academy/git-katas`. Each kata
 lives in its own folder; enter it and run:
 
-- bash/macOS/Linux: `source setup.sh`
-- Windows PowerShell: `.\setup.ps1`
+- bash/macOS/Linux (incl. WSL2 on Windows): `source setup.sh`
+- native Windows PowerShell only: `.\setup.ps1`
 
 | # | Kata | Folder | What it teaches |
 |---|------|--------|-----------------|
-| 1 | Configure Git | `configure-git` | name, email, editor setup |
-| 2 | Basic Commits | `basic-commits` | add, commit, status, log |
-| 3 | Basic Staging | `basic-staging` | the staging area, diff, unstaging |
+| 1 | Basic Commits | `basic-commits` | add, commit, status, log |
+| 2 | Basic Staging | `basic-staging` | the staging area, diff, unstaging |
+
+(Git identity itself — name, email, editor — was configured in the setup
+guide, so we skip the `configure-git` read-and-do kata.)
 
 These are a self-check more than a lesson — if one feels routine, move on.
 
@@ -29,7 +31,9 @@ Lambdas · Default arguments · Named arguments · Nullable types · Nothing
 type · String templates
 
 One commit per solved task. Verify with `./gradlew :Introduction-Lambdas:test`
-(swap in the section name of whatever you're testing) or run the whole suite
+(swap in the section name of whatever you're testing; spaces in a task name
+become underscores in the Gradle module name, so "Filter map" is
+`Collections-Filter_map`) or run the whole suite
 with `./gradlew test`. Push and open a PR **into `master` of the koans fork**
 when the week's set is done — it will be reviewed, not merged.
 
@@ -43,7 +47,7 @@ when the week's set is done — it will be reviewed, not merged.
 
 ## Done when
 
-- [ ] 3 katas complete
+- [ ] 2 katas complete
 - [ ] 6 koans committed and PR open in the koans fork
 - [ ] PR open here with your `students/<username>.md`
 - [ ] You can do `git status` → `git add` → `git commit` → `git push` from memory

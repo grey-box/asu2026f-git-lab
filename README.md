@@ -13,10 +13,9 @@ merged, unlike the koans fork where branches are reviewed but never merged.
 
 - **Git exercises** — from the [eficode git-katas](https://github.com/eficode-academy/git-katas) collection (run fully locally; no remote needed).
 - **Kotlin Koans** — from [kotlin-koans-edu](https://github.com/Kotlin/kotlin-koans-edu), completed in the team fork [grey-box/kotlin-koans](https://github.com/grey-box/kotlin-koans). Solve them in Android Studio or any editor you like; verify with `./gradlew test` (no EduTools plugin needed).
-- **`app/`** — a small Kotlin app used for the Week 4 feature exercise. Builds with `./gradlew build` from inside `app/`.
+- **`app/`** — a small Kotlin app used for the Week 4 feature exercise. Builds with `./gradlew build` from inside `app/`. Week 2's utility-function exercise (including its JUnit tests) also lives here, under `src/main/kotlin/utils/<username>/`.
 - **`exercises/`** — the weekly apply-exercise instructions (weeks 1–4).
 - **`students/`** — one intro file per student (Week 1 target).
-- **`utils/`** — per-student Kotlin utilities (Week 2 target).
 
 ## How to work here
 
@@ -26,4 +25,5 @@ merged, unlike the koans fork where branches are reviewed but never merged.
 3. Push and open a pull request into `main` — a PR template will guide you.
 4. A lead (or a peer, later in the course) reviews; address feedback, then it merges.
 
-Questions? Ask in the team channel.
+Questions? Ask in the team channel — paste the exact command you ran and the
+full error text (copy-paste, not a screenshot).
