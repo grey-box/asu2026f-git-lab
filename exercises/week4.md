@@ -51,7 +51,7 @@ commit hash + one-line justification) wins bragging rights.
 ## Done when
 
 - [ ] 3 katas complete
-- [ ] 5 koans committed, PR open in the fork — assigned 24 complete
+- [ ] 5 koans committed, PR open in the fork — assigned 26 complete
 - [ ] Feature PR merged with clean history
 - [ ] `app/` builds after all features merge
 - [ ] Retrospective done
