@@ -22,6 +22,8 @@ you'd tell last week's self.
 
 ## Week 2 observations
 
+**Harshit Kumar:** My Week 1 introduction and Week 2 `zipWithIndex` work reinforced using focused branches, checking staged changes, and making commits that explain one change. A fast-forward advances a branch pointer when histories have not diverged; a three-way merge combines divergent work using a common ancestor. Implementing `zipWithIndex` made Kotlin Collections behavior concrete, and JUnit tests covered empty lists, a single element, sequential indices, duplicates, and non-String values. My takeaway for peer code/test review is to check the implementation and test coverage together, especially edge cases.
+
 *(entries go here)*
 
 ## Week 1 observations
