@@ -23,6 +23,8 @@ you'd tell last week's self.
 ## Week 2 observations
 
 *(entries go here)*
+**Brian Mejia** — What surprised me most in Week 2 was learning how branches work in Git and how easy they are to create and switch between. I also learned the difference between a fast forward merge and a merge commit, and seeing it in git log --graph helped me understand how the commit history works. If I could tell myself something from last week, it would be to use git status more often and create branches when working on new changes. I think this will be especially important when working with everyone on Mesh's MVVM migration, since keeping changes organized will make it easier to work together and avoid conflicts.
+
 
 ## Week 1 observations
 
