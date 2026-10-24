@@ -22,7 +22,10 @@ you'd tell last week's self.
 
 ## Week 2 observations
 
-*(entries go here)*
+Jason: This week I practiced and completed all of my Kotlin Koan tasks. I also finished dedupePreservingOrder tasks with tests.
+I would say that the Koans have been helpful by giving a rundown and the laid out TODOs are also nice. Going line by line helps me personally.
+I learned more about Sets and Lists like how my function uses Set to track values already seen while Lists keep the order of first appearance. I would probably tell my last week's self
+to start earlier so I can understand these tasks better.
 
 ## Week 1 observations
 
