@@ -7,5 +7,7 @@ fun main() {
     //     tournament.register { Jason() }
     // (the tournament is runnable with any number of entries registered)
 
+    tournament.register { Flavio() }
+
     print(tournament.play())
 }
