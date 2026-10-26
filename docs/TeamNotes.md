@@ -23,6 +23,10 @@ you'd tell last week's self.
 ## Week 2 observations
 
 *(entries go here)*
+
+Damien Manygoats - Week 2 was helpful in making me better understand how branches actually work and Kotlin was very
+informative on the filter, map, groupBy, and partition functions.
+
 Flavio Vazquez - Week 2 was really helpful and informative as it got me 
 more comfortable working with branches and merges in Git. The kotlin koans
 were also really helpful in my learnign of the language and understanding
