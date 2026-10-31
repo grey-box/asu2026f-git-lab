@@ -9,5 +9,7 @@ fun main() {
     tournament.register { Jason() }
     tournament.register { Harshit() }
 
+    tournament.register { Flavio() }
+
     print(tournament.play())
 }
