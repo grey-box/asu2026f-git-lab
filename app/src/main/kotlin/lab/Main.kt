@@ -7,6 +7,10 @@ fun main() {
     //     tournament.register { Jason() }
     // (the tournament is runnable with any number of entries registered)
     tournament.register { Damien() }
+    tournament.register { Jason() }
+    tournament.register { Harshit() }
+
+    tournament.register { Flavio() }
 
     print(tournament.play())
 }
