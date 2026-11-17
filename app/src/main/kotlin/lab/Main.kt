@@ -6,10 +6,10 @@ fun main() {
     // Week 4: register your entry by adding one line here, e.g.
     //     tournament.register { Jason() }
     // (the tournament is runnable with any number of entries registered)
+    tournament.register { Brian() }
     tournament.register { Damien() }
     tournament.register { Jason() }
     tournament.register { Harshit() }
-
     tournament.register { Flavio() }
 
     print(tournament.play())
